@@ -2,50 +2,86 @@ async function createPDF() {
 
     const { jsPDF } = window.jspdf;
 
-    let files = document.getElementById("images").files;
-    let result = document.getElementById("result");
-    let downloadLink = document.getElementById("downloadPDF");
+    const files = document.getElementById("images").files;
+    const result = document.getElementById("result");
+    const downloadLink = document.getElementById("downloadPDF");
 
-    if (files.length === 0) {
-        result.innerText = "Please select images ❗";
+    // Reset
+    result.innerText = "";
+    downloadLink.style.display = "none";
+
+    // Check files
+    if (!files || files.length === 0) {
+        result.innerText = "❗ Please select images";
         return;
     }
 
-    let pdf = new jsPDF();
+    // Create PDF (A4)
+    const pdf = new jsPDF("p", "mm", "a4");
 
     for (let i = 0; i < files.length; i++) {
 
-        let file = files[i];
+        const file = files[i];
 
-        let reader = new FileReader();
+        // Validate image
+        if (!file.type.startsWith("image/")) {
+            result.innerText = "❌ Only image files allowed";
+            return;
+        }
 
-        let imgData = await new Promise((resolve) => {
+        // Convert to base64
+        const imgData = await new Promise((resolve, reject) => {
+            const reader = new FileReader();
             reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
             reader.readAsDataURL(file);
         });
 
-        let img = new Image();
-
-        let imgLoad = await new Promise((resolve) => {
-            img.onload = resolve;
-            img.src = imgData;
+        // Load image
+        const img = await new Promise((resolve, reject) => {
+            const image = new Image();
+            image.onload = () => resolve(image);
+            image.onerror = reject;
+            image.src = imgData;
         });
 
-        let width = pdf.internal.pageSize.getWidth();
-        let height = (img.height * width) / img.width;
+        // Page size
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+
+        // Maintain ratio
+        let imgWidth = pageWidth;
+        let imgHeight = (img.height * imgWidth) / img.width;
+
+        if (imgHeight > pageHeight) {
+            imgHeight = pageHeight;
+            imgWidth = (img.width * imgHeight) / img.height;
+        }
+
+        // Center image
+        const x = (pageWidth - imgWidth) / 2;
+        const y = (pageHeight - imgHeight) / 2;
 
         if (i > 0) pdf.addPage();
 
-        pdf.addImage(imgData, "JPEG", 0, 0, width, height);
+        const format = file.type.includes("png") ? "PNG" : "JPEG";
+
+        pdf.addImage(imgData, format, x, y, imgWidth, imgHeight);
     }
 
-    let pdfBlob = pdf.output("blob");
-    let url = URL.createObjectURL(pdfBlob);
+    // Create download
+    const pdfBlob = pdf.output("blob");
+    const url = URL.createObjectURL(pdfBlob);
 
     downloadLink.href = url;
-    downloadLink.download = "converted.pdf";
-    downloadLink.style.display = "block";
-    downloadLink.innerText = "Download PDF";
+    downloadLink.download = "image-to-pdf.pdf";
+    downloadLink.style.display = "inline-block";
+    downloadLink.innerText = "⬇️ Download PDF";
 
-    result.innerText = "PDF Created Successfully ✅";
-}
+    result.innerText = "✅ PDF created successfully";
+
+    // Cleanup memory
+    setTimeout(() => {
+        URL.revokeObjectURL(url);
+    }, 10000);
+            }
