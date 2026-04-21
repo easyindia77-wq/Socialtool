@@ -1,64 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9933468471024591"
-     crossorigin="anonymous"></script>
-<title>Instant QR Code Generator Online - Create & Download QR Code Free</title>
 
-<meta name="description" content="Create QR codes online instantly for links, text, WhatsApp and payments. Free, fast and secure QR code generator with download option.">
+<title>Free QR Code Generator Online – Create QR Code Instantly</title>
 
-<meta name="keywords" content="free qr code generator online, create qr code instantly, url to qr code tool, whatsapp qr generator free, upi qr code maker online, fast qr code creator, no signup qr generator">
+<meta name="description" content="Create QR code online free for URL, WhatsApp, and text. Fast, secure QR generator with instant download. No signup required.">
 
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://socialtool.pages.dev/tools/qr-generator/">
+<meta name="keywords" content="free qr generator online, create qr code instantly, qr code maker tool, whatsapp qr generator free, url to qr converter, fast qr code creator, secure qr tool online, qr code without signup">
 
 <link rel="stylesheet" href="/style.css">
-<script defer src="/analytics.js"></script>
 
 <style>
-.tool-box{text-align:center;margin-top:20px;}
-input{padding:12px;width:80%;max-width:320px;border-radius:8px;border:1px solid #ddd;}
-button{padding:12px 25px;background:#2563eb;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:bold;}
-button:hover{background:#1e40af;}
-#qr{margin-top:20px;}
-a.download-btn{display:inline-block;margin-top:15px;background:#22c55e;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;}
-</style>
+body {font-family: Arial; background:#fafafa; margin:0;}
+.container {padding:20px;}
+nav {display:flex; justify-content:space-between;}
+a {text-decoration:none; margin:5px; color:#2d6cdf;}
 
-<!-- FAQ SCHEMA -->
-<script type="application/ld+json">
-{
-"@context": "https://schema.org",
-"@type": "FAQPage",
-"mainEntity": [
-{
-"@type": "Question",
-"name": "How can I create a QR code online?",
-"acceptedAnswer": {
-"@type": "Answer",
-"text": "Simply enter your text or link and click generate. Your QR code will be created instantly."
+.tool-box {
+background:#fff;
+padding:20px;
+border-radius:10px;
+text-align:center;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
-},
-{
-"@type": "Question",
-"name": "Can I generate QR codes for WhatsApp or payments?",
-"acceptedAnswer": {
-"@type": "Answer",
-"text": "Yes, you can create QR codes for WhatsApp chat links, UPI payments and any URL."
+
+input, select {
+padding:10px;
+margin:10px;
+width:90%;
+max-width:300px;
 }
-},
-{
-"@type": "Question",
-"name": "Is this QR code tool secure?",
-"acceptedAnswer": {
-"@type": "Answer",
-"text": "Yes, everything runs in your browser. No data is stored or shared."
+
+button {
+padding:12px;
+background:#2d6cdf;
+color:#fff;
+border:none;
+border-radius:6px;
+cursor:pointer;
 }
+
+#downloadQR {
+display:block;
+margin-top:15px;
+padding:10px;
+background:green;
+color:#fff;
+border-radius:6px;
 }
-]
+
+/* FOOTER */
+footer {
+margin-top:40px;
+background:#111;
+color:#fff;
+padding:20px;
+text-align:center;
 }
-</script>
+
+footer a {
+color:#fff;
+margin:0 10px;
+text-decoration:none;
+}
+</style>
 
 </head>
 
@@ -66,119 +74,92 @@ a.download-btn{display:inline-block;margin-top:15px;background:#22c55e;color:#ff
 
 <div class="container">
 
-<!-- NAV -->
+<!-- NAVIGATION -->
 <nav>
-<div class="logo">MyTools</div>
-<div class="links">
+<div><b>MyTools</b></div>
+<div>
 <a href="/">Home</a>
 <a href="/tools.html">Tools</a>
 <a href="/blog.html">Blog</a>
 </div>
 </nav>
 
-<!-- TOOL -->
-<h1>⚡ Free QR Code Generator</h1>
+<h1>🔥 Free QR Code Generator Online</h1>
 
 <p>
-Apna URL, WhatsApp link ya simple text enter karo aur turant ek <strong>scan-ready QR code</strong> generate karo.  
-Yeh tool fast hai, easy hai aur bina kisi signup ke kaam karta hai.
+Create QR code instantly for URL, WhatsApp, or text. This tool works fast, secure, and does not require signup.
 </p>
 
 <div class="tool-box">
 
-<input type="text" id="text" placeholder="Enter link ya text">
+<input type="text" id="text" placeholder="Enter URL or text">
 
-<br><br>
+<select id="qrColor">
+<option value="#000000">Black</option>
+<option value="#ff0000">Red</option>
+<option value="#0000ff">Blue</option>
+</select>
+
+<input type="text" id="whatsapp" placeholder="WhatsApp Number (91xxxx...)">
 
 <button onclick="generateQR()">Generate QR Code</button>
 
 <div id="qr"></div>
 
-<a id="downloadQR" class="download-btn" style="display:none;" download="qr-code.png">Download QR</a>
+<a id="downloadQR" style="display:none;">Download QR Code</a>
 
 </div>
 
-<!-- BLOG -->
-<p>
-<a href="/blog/qr-generator-guide/">📖 Complete QR Code Guide</a>
-</p>
-
-<!-- INTERNAL LINKING -->
-<div style="margin-top:30px;">
-<h2>Useful Tools You Can Try</h2>
+<!-- INTERNAL LINKS -->
+<h2>🔥 Try More Free Tools</h2>
 <ul>
-<li><a href="/tools/image-compressor/">Image Compressor</a></li>
+<li><a href="/tools/image-compressor/">Compress Image Online</a></li>
+<li><a href="/tools/emi-calculator/">EMI Calculator Tool</a></li>
 <li><a href="/tools/word-counter/">Word Counter</a></li>
-<li><a href="/tools/age-calculator/">Age Calculator</a></li>
-<li><a href="/tools/pdf-tools/">PDF Tools</a></li>
-<li><a href="/tools/case-converter/">Case Converter</a></li>
-<li><a href="/tools/emi-calculator/">EMI Calculator</a></li>
-<li><a href="/tools/unit-converter/">Unit Converter</a></li>
 <li><a href="/tools/gst-calculator/">GST Calculator</a></li>
 </ul>
-</div>
 
 <!-- SEO CONTENT -->
-<div style="margin-top:40px;">
-
-<h2>Why Use This QR Code Generator?</h2>
+<h2>QR Code Generator Online Free</h2>
 
 <p>
-Aaj kal QR codes ka use har jagah ho raha hai — payments, marketing aur link sharing ke liye.  
-Yeh tool aapko bina delay ke <strong>instant QR code generate</strong> karne me help karta hai.
+Generate high-quality QR codes for links, business use, and sharing instantly. This fast QR code creator works directly in your browser without uploading any data.
 </p>
 
 <p>
-Iska interface simple hai aur output clear hota hai, jisse scanning fast aur accurate hoti hai.  
-Aap ise mobile ya desktop dono par easily use kar sakte ho.
+Our secure QR code tool is optimized for mobile users and supports instant download. Create QR for websites, WhatsApp numbers, or custom text easily.
 </p>
 
-<h2>Main Features</h2>
+<h2>Popular Search Keywords</h2>
 
-<ul>
-<li>⚡ Fast QR generation</li>
-<li>📱 Mobile friendly design</li>
-<li>🔐 No data tracking</li>
-<li>🌐 Works for all links & text</li>
-<li>⬇️ Instant download option</li>
-</ul>
+<p>
+qr code generator online free, create qr code for website, whatsapp qr code maker, free qr code creator tool, generate qr code instantly, secure qr generator, mobile qr code tool, no signup qr creator, fast qr code download
+</p>
 
-</div>
+<h2>Frequently Asked Questions</h2>
+
+<p><b>Is this QR generator free?</b><br>Yes, 100% free.</p>
+<p><b>Does it work on mobile?</b><br>Yes, fully mobile friendly.</p>
+<p><b>Is my data safe?</b><br>Yes, nothing is stored.</p>
 
 </div>
 
 <!-- FOOTER -->
-<footer style="margin-top:50px; background:#f8fafc; padding:30px 10px; text-align:center; border-top:1px solid #eee;">
+<footer>
 
-<p style="font-size:14px; color:#555;">
-© 2026 <strong>MyTools</strong> - All Rights Reserved
-</p>
+<p>© 2026 MyTools – Free Online Tools</p>
 
-<!-- IMPORTANT LINKS -->
-<div style="margin-top:10px;">
-<a href="/privacy-policy.html">Privacy Policy</a> |
-<a href="/terms.html">Terms & Conditions</a> |
-<a href="/contact.html">Contact Us</a> |
-<a href="/about.html">About Us</a>
+<div>
+<a href="/privacy-policy.html">Privacy Policy</a>
+<a href="/terms.html">Terms & Conditions</a>
+<a href="/contact.html">Contact</a>
 </div>
 
-<!-- TOOL LINKS -->
-<div style="margin-top:15px; font-size:14px;">
-<a href="/tools/image-compressor/">Image Compressor</a> |
-<a href="/tools/word-counter/">Word Counter</a> |
-<a href="/tools/qr-generator/">QR Generator</a> |
-<a href="/tools/gst-calculator/">GST Calculator</a>
+<div>
+<a href="/tools/image-compressor/">Image Compressor</a>
+<a href="/tools/emi-calculator/">EMI Calculator</a>
+<a href="/tools/pdf-tools/">PDF Tools</a>
 </div>
-
-<!-- TRUST -->
-<p style="margin-top:15px; font-size:13px; color:#777;">
-Free tools designed for speed, simplicity and everyday use.
-</p>
-
-<!-- SEO LINE -->
-<p style="font-size:12px; color:#999; margin-top:10px;">
-Popular searches: free qr code generator, create qr code online, instant qr maker, fast online tools
-</p>
 
 </footer>
 
@@ -186,43 +167,57 @@ Popular searches: free qr code generator, create qr code online, instant qr make
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <script>
-function generateQR(){
-    let text = document.getElementById("text").value.trim();
+function generateQR() {
 
-    if(!text){
-        alert("Please enter text or URL");
-        return;
-    }
+let text = document.getElementById("text").value.trim();
+let whatsapp = document.getElementById("whatsapp").value.trim();
+let color = document.getElementById("qrColor").value;
 
-    if(!text.startsWith("http://") && !text.startsWith("https://")){
-        text = "https://" + text;
-    }
+let qrDiv = document.getElementById("qr");
+let downloadLink = document.getElementById("downloadQR");
 
-    document.getElementById("qr").innerHTML = "";
+qrDiv.innerHTML = "";
+downloadLink.style.display = "none";
 
-    new QRCode(document.getElementById("qr"), {
-        text: text,
-        width: 220,
-        height: 220
-    });
+// WhatsApp auto
+if (whatsapp) {
+text = "https://wa.me/" + whatsapp;
+}
 
-    setTimeout(() => {
-        let img = document.querySelector("#qr img") || document.querySelector("#qr canvas");
+if (!text) {
+qrDiv.innerHTML = "Enter text or URL ❗";
+return;
+}
 
-        let link = document.getElementById("downloadQR");
+// Auto https
+if (text.includes(".") && !text.startsWith("http")) {
+text = "https://" + text;
+}
 
-        if(img.tagName === "IMG"){
-            link.href = img.src;
-        } else {
-            link.href = img.toDataURL("image/png");
-        }
+// Generate QR
+new QRCode(qrDiv, {
+text: text,
+width: 220,
+height: 220,
+colorDark: color,
+colorLight: "#ffffff"
+});
 
-        link.style.display = "inline-block";
-    }, 300);
+// Download
+setTimeout(() => {
+let canvas = qrDiv.querySelector("canvas");
+
+if (!canvas) return;
+
+let url = canvas.toDataURL("image/png");
+
+downloadLink.href = url;
+downloadLink.download = "qr-code.png";
+downloadLink.style.display = "block";
+}, 500);
+
 }
 </script>
 
-<script src="/main.js"></script>
-
 </body>
-      </html>
+     </html>
