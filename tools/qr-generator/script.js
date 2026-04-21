@@ -1,63 +1,51 @@
-function generateQR() {
+async function createPDF() {
 
-    const textInput = document.getElementById("text");
-    const qrDiv = document.getElementById("qr");
-    const downloadLink = document.getElementById("downloadQR");
+    const { jsPDF } = window.jspdf;
 
-    let text = textInput.value.trim();
+    let files = document.getElementById("images").files;
+    let result = document.getElementById("result");
+    let downloadLink = document.getElementById("downloadPDF");
 
-    // Reset UI
-    qrDiv.innerHTML = "";
-    downloadLink.style.display = "none";
-
-    // Validation
-    if (!text) {
-        qrDiv.innerHTML = "<p style='color:red;'>⚠ Please enter text or URL</p>";
+    if (files.length === 0) {
+        result.innerText = "Please select images ❗";
         return;
     }
 
-    // Auto URL Fix (important for real usage)
-    if (
-        text.startsWith("www.") ||
-        (!text.startsWith("http://") && !text.startsWith("https://") && text.includes("."))
-    ) {
-        text = "https://" + text;
-    }
+    let pdf = new jsPDF();
 
-    try {
-        // Generate QR
-        new QRCode(qrDiv, {
-            text: text,
-            width: 220,
-            height: 220,
-            correctLevel: QRCode.CorrectLevel.H // high quality
+    for (let i = 0; i < files.length; i++) {
+
+        let file = files[i];
+
+        let reader = new FileReader();
+
+        let imgData = await new Promise((resolve) => {
+            reader.onload = () => resolve(reader.result);
+            reader.readAsDataURL(file);
         });
 
-        // Download Setup
-        setTimeout(() => {
+        let img = new Image();
 
-            let img = qrDiv.querySelector("img");
-            let canvas = qrDiv.querySelector("canvas");
+        let imgLoad = await new Promise((resolve) => {
+            img.onload = resolve;
+            img.src = imgData;
+        });
 
-            if (img) {
-                downloadLink.href = img.src;
-            } 
-            else if (canvas) {
-                downloadLink.href = canvas.toDataURL("image/png");
-            } 
-            else {
-                qrDiv.innerHTML = "<p style='color:red;'>❌ QR generation failed</p>";
-                return;
-            }
+        let width = pdf.internal.pageSize.getWidth();
+        let height = (img.height * width) / img.width;
 
-            downloadLink.download = "qr-code.png";
-            downloadLink.innerText = "⬇ Download QR Code";
-            downloadLink.style.display = "inline-block";
+        if (i > 0) pdf.addPage();
 
-        }, 300);
-
-    } catch (error) {
-        qrDiv.innerHTML = "<p style='color:red;'>❌ Something went wrong</p>";
-        console.error(error);
+        pdf.addImage(imgData, "JPEG", 0, 0, width, height);
     }
+
+    let pdfBlob = pdf.output("blob");
+    let url = URL.createObjectURL(pdfBlob);
+
+    downloadLink.href = url;
+    downloadLink.download = "converted.pdf";
+    downloadLink.style.display = "block";
+    downloadLink.innerText = "Download PDF";
+
+    result.innerText = "PDF Created Successfully ✅";
                 }
