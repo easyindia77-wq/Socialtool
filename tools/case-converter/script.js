@@ -48,4 +48,4 @@ function copyText() {
 
     navigator.clipboard.writeText(text);
     alert("Copied to clipboard ✅");
-}
+        }
